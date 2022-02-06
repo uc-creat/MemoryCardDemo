@@ -48,7 +48,7 @@ class App extends React.Component{
         
         this.setState({currScore:0})
         this.state.dataset.forEach(element => {
-          element.clicked = false;
+          element.clicked = false
         })
       }
       
@@ -56,7 +56,7 @@ class App extends React.Component{
   }
 
   increament = ()=>{
-    this.setState({currScore: this.currScore + 1})
+    this.setState({currScore: this.state.currScore + 1})
   }
 
   render(){
@@ -69,7 +69,7 @@ class App extends React.Component{
 
         ></Header>
 
-        {this.state.dataset.map(data =>{
+        {this.state.dataset.map(data =>(
           <Card
 
             handleClick = {this.handleClick}
@@ -78,7 +78,7 @@ class App extends React.Component{
             image = {data.image}
 
           ></Card>
-        })}
+        ))}
       </div>
     )
   }
