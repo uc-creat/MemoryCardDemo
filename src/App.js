@@ -10,7 +10,15 @@ function Header(props){
   )
 }
 
+function Card(props){
+  return(
+    <div onClick = {()=>props.handleClick(props.id)}>
 
+      <img src={props.image} alt=""></img>
+
+    </div>
+  )
+}
 
 
 class App extends React.Component{
