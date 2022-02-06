@@ -2,7 +2,6 @@
 
 ```
 npx create-react-app nameoftheapp 
-
 ```
 
 The name of the app must be in small letters.
@@ -11,6 +10,5 @@ The name of the app must be in small letters.
 
 ```
 npm start 
-
 ```
 
