@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import dataset from "./characters.json"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component{
+
+  state = {
+    dataset,
+    highScore:0,
+    currScore:0,
+  }
+
+  handleClick = (id)=>{
+    this.score(id);
+  }
+
+  score = (id)=>{
+    this.state.dataset.forEach(element => {
+      if(element.id === id && element.clicked === false){
+        element.clicked = true;
+        this.increament();
+      }
+      else if(element.id === id && element.clicked === true){
+
+        if(this.state.currScore > this.state.highScore){
+          this.setState({highScore:this.state.currScore})
+        }
+        
+        this.setState({currScore:0})
+        this.state.dataset.forEach(element => {
+          element.clicked = false;
+        })
+      }
+      
+    });
+  }
+
+
 }
+
+
+
+
+
+
 
 export default App;
