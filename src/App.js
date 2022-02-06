@@ -1,6 +1,17 @@
 import React from "react";
 import dataset from "./characters.json"
 
+function Header(props){
+  return(
+    <>
+      <h1>High Score: {props.highScore}</h1>
+      <h3>Current Score: {props.currScore}</h3>
+    </>
+  )
+}
+
+
+
 
 class App extends React.Component{
 
@@ -13,6 +24,7 @@ class App extends React.Component{
   handleClick = (id)=>{
     this.score(id);
   }
+
 
   score = (id)=>{
     this.state.dataset.forEach(element => {
@@ -33,6 +45,34 @@ class App extends React.Component{
       }
       
     });
+  }
+
+  increament = ()=>{
+    this.setState({currScore: this.currScore + 1})
+  }
+
+  render(){
+    return(
+      <div>
+        <Header
+
+          highScore = {this.state.highScore}
+          currScore = {this.state.currScore}
+
+        ></Header>
+
+        {this.state.dataset.map(data =>{
+          <Card
+
+            handleClick = {this.handleClick}
+            key = {data.id}
+            id = {data.id}
+            image = {data.image}
+
+          ></Card>
+        })}
+      </div>
+    )
   }
 
 
